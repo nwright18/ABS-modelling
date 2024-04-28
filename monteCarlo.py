@@ -41,6 +41,7 @@ def runMonte(loanpool,structuredSecurity,tolerance,NSIM): #starts a monte carlo 
             tranche._rate = newTrancheRate
             yields.append(newTrancheRate)
             diff += (tranche.notional * abs((oldTrancheRate - newTrancheRate)/oldTrancheRate))/structuredSecurity._totalNotional
+            print(diff)
         if (diff <= tolerance):
             break
     if count > maxIter:
@@ -91,5 +92,5 @@ def runSimulationParallel(loanpool,structuredSecurity,NSIM, numProcesses): #perf
     for index,_ in enumerate(structuredSecurity._tranches):
         finalDIRR.append(reduce(lambda total, dirr: total + dirr[index],dirrListUnpacked,0)/NSIM)
         finalAL.append(reduce(lambda total, al : total + al[index] if al[index] else total + 0,alListUnpacked,0)/NSIM)
-
+    print(finalDIRR,finalAL)
     return (finalDIRR,finalAL)

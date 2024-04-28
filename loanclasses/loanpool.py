@@ -79,7 +79,7 @@ class LoanPool(object):
         defaultProbabilities ={
             0 : random.choice([True if i < 5 else False for i in range(10000)]),
             1 : random.choice([True if i < 1 else False for i in range(1000)]),
-            2: random.choice([True if i < 2 else False for i in range(1000)]),
+            2 : random.choice([True if i < 2 else False for i in range(1000)]),
             3 : random.choice([True if i < 4 else False for i in range(1000)]),
             4 : random.choice([True if i < 2 else False for i in range(1000)]),
             5 : random.choice([True if i < 1 else False for i in range(1000)])

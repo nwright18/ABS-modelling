@@ -9,21 +9,21 @@ import getdata
 import logging
 
 def main():
-    logging.disable(logging.INFO)
+    #logging.disable(logging.INFO)
 
-    loanPool = getdata.readLoans('C:\\Users\\user\\Desktop\\Quantnet Python\\Homework\\Level 7\\Case Study\\Loans.csv')
+    loanPool = getdata.readLoans('C:\\Users\\noah3\\Downloads\\ABS-modelling\\ABS-modelling\\Loans.csv')
 
     structSec = StructuredSecurities(loanPool.totalPrinicipal(),0)
     structSec.addTranche(0.80,0.05,0)
     structSec.addTranche(0.20,0.08,1)
-
+    
 ###Testing doWaterfall functions
 
-    #loanPayments, ABSPayments,metrics,recValues = doWaterfall(loanPool, structSec)
+    # loanPayments, ABSPayments,metrics,recValues = doWaterfall(loanPool, structSec)
 
-    #writeToCSV(loanPayments, ABSPayments)
-    #print(metrics)
-    #print(recValues)
+    # writeToCSV(loanPayments, ABSPayments)
+    # print(metrics)
+    # print(recValues)
 
 ###simulate waterfall function
 
@@ -37,7 +37,6 @@ def main():
 
     simDIRR, simAL, finalyields = runMonte(loanPool,structSec,0.005,20)
 
-
     print('ABS metrics')
     for index,tranche in enumerate(structSec._tranches):
         seniority = 'Senior' if tranche._subordinate_flag == 0 else 'Equity'
@@ -50,3 +49,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+ 

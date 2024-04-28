@@ -3,7 +3,7 @@ Structured Securities Class
 """
 import logging
 
-from tranche import StandardTranche
+from absClasses.tranche import StandardTranche
 
 class StructuredSecurities(object):
 
@@ -97,7 +97,7 @@ def doWaterfall(loanpool, structuredSecurity):
         principal_payment = loanpool.principalDue(period) + defaults
         structuredSecurity.makePayments(total_payment,principal_payment)
         recValues.append(defaults)
-
+        #add cpr to this code (potentially)
 
     loanPayments = loanpool.getWaterfall()
     ABSPayments = structuredSecurity.getWaterfall()
